@@ -41,6 +41,7 @@ code {
 	width: 8em;
 	height: 8em;
 	z-index: 2;
+	transition: transform 0.2s ease;
 }
 #specimen{
 	position: absolute;

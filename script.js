@@ -17,7 +17,8 @@ class Lens{
 		Object.assign(glass.style, {
 			backgroundImage: `url(${this.target.src})`,
 			backgroundRepeat: 'no-repeat',
-			backgroundSize: `${this.target.width * this.zoom}px ${this.target.height *this.zoom}px`
+			backgroundSize: `${this.target.width * this.zoom}px ${this.target.height *this.zoom}px`,
+			transform: 'scale(1)'
 		})
 
 		this.glass = glass
@@ -34,12 +35,15 @@ class Lens{
 			e.preventDefault()
 			this.handle(e)
 		})
+		this.timer
 	}
 	handle(e){
 		let target = this.target,
 			{x, y} = getCursor(e, target),
 			{h, w, bw} = this.meta,
 			glass = this.glass
+
+		if(this.timer) clearTimeout(this.timer)
 		
 		if(x > target.width - (w / this.zoom)) x = target.width - (w / this.zoom)
 
@@ -52,8 +56,12 @@ class Lens{
 		Object.assign(glass.style, {
 			left: `${x - w}px`,
 			top: `${y - h}px`,
-			backgroundPosition: `-${(x * this.zoom) - w + bw}px -${(y * this.zoom) - h + bw}px`
+			backgroundPosition: `-${(x * this.zoom) - w + bw}px -${(y * this.zoom) - h + bw}px`,
+			transform: 'scale(2)'
 		})
+		this.timer = setTimeout(() => {
+			glass.style.transform = 'scale(1)'
+		}, 1000)
 	}
 	
 }
