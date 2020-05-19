@@ -1,0 +1,63 @@
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+}
+html, body{
+	height: 100%;
+	width: 100%;
+	min-height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	font-family: 'Balsamiq Sans', sans-serif;
+	background-color: #fff;
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+::selection{
+	background-color: silver;
+	color: white;
+}
+.container{
+	height: 100vw;
+	width: 100vw;
+}
+.glass{
+	box-shadow: 0 0 1em black;
+	position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+	cursor: none;
+	width: 8em;
+	height: 8em;
+	z-index: 2;
+}
+#specimen{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	object-position: center;
+	object-fit: cover;
+}
+.caption{
+	font-size: 2em;
+	text-align: center;
+	color: #fff;
+	padding: 0.5em 1em;
+	position: fixed;
+	bottom: 0; right: 0; left: 0;
+	z-index: 1;
+	background: rgba(0,0,0,0.8);
+	user-select: none;
+	pointer-events: none;
+}
